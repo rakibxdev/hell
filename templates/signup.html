@@ -1,0 +1,213 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon_io/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon_io/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon_io/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon_io/site.webmanifest' %}">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+     <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pppp.css' %}" />
+    <!-- Boxicons CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+     
+     
+     <section class="navbar navbar-default navbar-static-top" role="navigation">
+          <div class="container1">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+
+                    <!-- lOGO TEXT HERE -->
+                    <a href="{% url 'Homepage" class="navbar-brand"><i class="fa fa-h-square"></i> AI Doc</a>
+               </div>
+
+               <!-- MENU LINKS -->
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="#top" class="smoothScroll">Home</a></li>
+                         <li><a href="#about" class="smoothScroll">About Us</a></li>
+                         <li><a href="{% url 'login' %}" class="smoothScroll">Login</a></li>
+                         <li><a href="{% url 'reg'%}" class="smoothScroll">Register</a></li>
+                         <li><a href="#google-map" class="smoothScroll">Contact</a></li>
+                    </ul>
+               </div>
+
+          </div>
+     </section>
+
+
+
+
+    <div class="container">
+      <header>Registration</header>
+      <form action="#" method="post" > {% csrf_token %}
+
+        <div class="field email-field">
+          <div class="input-field">
+            <input type="text" placeholder="Enter your username" class="name" name="name" required />
+          </div>
+        </div>
+
+        <div class="field email-field">
+          <div class="input-field">
+            <input type="email" placeholder="Enter your email" class="email" name="mail" required />
+          </div>
+        </div>
+
+        <div class="field create-password">
+          <div class="input-field">
+            <input
+              type="password"
+              placeholder="Create password"
+              class="password"
+              name="password"
+              id="pw"
+              required
+            />
+            <i class="bx bx-show show-hide" aria-hidden="true" id="eye" onclick="toggle()"></i>
+          </div>
+          
+        </div>
+
+        <div class="field confirm-password">
+          <div class="input-field">
+            <input
+              type="password"
+              placeholder="Confirm password"
+              class="cPassword"
+              name="cpassword"
+              id="cpw"
+              required
+            />
+            <i class="bx bx-show show-hide" aria-hidden="true" id="eye" onclick="ctoggle()"></i>
+          </div>
+          <label style="color: red;" id="wrong"></label>
+        </div>
+        <div class="input-field button">
+          <input type="submit" onclick="return checkpwd()" value="Submit Now" />
+        </div>
+
+
+
+        <div class="login-signup">
+            <span style="color: blue" class="text">Already a member?
+                <a href="{% url 'login' %}" class="text signup-link" color="blue">Login Now</a>
+            </span>
+        </div>
+      </form>
+    </div>
+
+
+
+ <!-- FOOTER -->
+
+
+
+<footer>
+
+                 <div class="col-md-12 col-sm-12 border-top">
+                      <div class="col-md-4 col-sm-6">
+                           <div class="copyright-text"> 
+                                <p>Copyright &copy; 2022 Ai Doc 
+                                
+                                | Design: Rakibul</p>
+                           </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                           <div class="footer-link"> 
+                                <a href="#">Laboratory Tests</a>
+                                <a href="#">Departments</a>
+                                <a href="#">Insurance Policy</a>
+                                <a href="#">Careers</a>
+                           </div>
+                      </div>
+                      <div class="col-md-2 col-sm-2 text-align-center">
+                           <div class="angle-up-btn"> 
+                               <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i class="fa fa-angle-up"></i></a>
+                           </div>
+                      </div>   
+                 </div>
+                 
+            </div>
+       </div>
+  </footer>
+
+
+
+<script>
+
+    var state = false;
+    var cstate= false;
+    function toggle(){
+   
+         if (state){
+             document.getElementById("pw").setAttribute("type", "password");
+             state = false;
+        }
+        else{
+             document.getElementById("pw").setAttribute("type", "text");
+             state = true;
+        }
+    }
+    function ctoggle(){
+   
+   if (cstate){
+       document.getElementById("cpw").setAttribute("type", "password");
+       cstate = false;
+  }
+  else{
+       document.getElementById("cpw").setAttribute("type", "text");
+       cstate = true;
+  }
+
+}
+   
+</script>
+
+
+<script>
+  function checkpwd(){
+    var pwd = document.getElementById("pw").value;
+    var cpwd = document.getElementById("cpw").value;
+
+    if(pwd == cpwd)
+    {
+      return true;
+      
+    }
+    else{
+      document.getElementById("wrong").innerHTML = "Password and Confirm password didn't matched";
+      return false;
+    }
+
+  }
+
+
+</script>
+
+     <script src="{% static 'js/jquery.js'%}"></script>
+     <script src="{% static 'js/bootstrap.min.js'%}"></script>
+
+  </body>
+</html>
